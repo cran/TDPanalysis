@@ -31,18 +31,18 @@ Tmax.find <- function (tension, dates, ID) {
 #' DOY = c(rep(102, times=10), rep(103, times=10))
 #' ID = c(rep("A", times=5), rep("B", times=5), rep("A", times=5), rep("B", times=5))
 #' Tmax = c(rep(0.7512, times=5), rep(0.7359, times=5),rep(0.7644, times=5),rep(0.7666, times=5))
-#' df <- data.frame(DOY, ID, Tmax)
+#' df <- data.frame(DOY, ID, Tmax, stringsAsFactors = FALSE)
 #' Tmaxplot(df)
 #' @export
 Tmaxplot <- function (df) {
   
-  for (i in 1:length(levels(df$ID))){
-    sub.i <- split(df, df$ID)[[i]]
+  for (i in 1:length(unique(df$ID))){
+    sub.i <- df[df$ID == unique(df$ID)[i],]
     
     IQR3 <- 3*((quantile(sub.i$Tmax)[4])-quantile(sub.i$Tmax)[2])
     moy3 <- mean(sub.i$Tmax)
     
-    plot(sub.i$DOY, sub.i$Tmax, ylim=c(moy3*0.9,moy3*1.1), pch=16, col="red", type="o", main=paste(levels(df$ID)[i]), xlab="DOY", ylab="Tmax")
+    plot(sub.i$DOY, sub.i$Tmax, ylim=c(moy3*0.9,moy3*1.1), pch=16, col="red", type="o", main=paste(unique(df$ID)[i]), xlab="DOY", ylab="Tmax")
     abline(h=moy3+IQR3, col="red")
     abline(h=moy3-IQR3, col="red")
     
@@ -52,14 +52,14 @@ Tmaxplot <- function (df) {
     IQR15 <- 1.5*((quantile(sub.i$Tmax)[4])-quantile(sub.i$Tmax)[2])
     moy15 <- mean(sub.i$Tmax)
     
-    points(sub.i$DOY, sub.i$Tmax, ylim=c(moy3*0.9,moy3*1.1), pch=16, col="blue", type="o", main=paste(levels(df$ID)[i]))
+    points(sub.i$DOY, sub.i$Tmax, ylim=c(moy3*0.9,moy3*1.1), pch=16, col="blue", type="o", main=paste(unique(df$ID)[i]))
     abline(h=moy15+IQR15, col="blue")
     abline(h=moy15-IQR15, col="blue")
     
     sub.i <- sub.i[!sub.i$Tmax<=as.numeric(moy15-IQR15),]
     sub.i <- sub.i[!sub.i$Tmax>=as.numeric(moy15+IQR15),]
     
-    points(sub.i$DOY, sub.i$Tmax, ylim=c(moy3*0.9,moy3*1.1), pch=16, type="o", main=paste(levels(df$ID)[i]))
+    points(sub.i$DOY, sub.i$Tmax, ylim=c(moy3*0.9,moy3*1.1), pch=16, type="o", main=paste(unique(df$ID)[i]))
     legend("topright", bty="n", legend=c("Points kept", "Points filtered by 1.5*IQR", "Points filtered by 3*IQR"), col=c("black", "blue","red"), pch=16, lty=1, lwd=1)
   }
 }

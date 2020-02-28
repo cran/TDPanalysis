@@ -26,4 +26,3 @@ If SpWD_frac and HtWd_diam are both entered, the function will return an error. 
 diam = c(12,14,16,13,15)
 SpWd_Area_calc(diam=diam, SpWd_frac=0.2)
 }
-

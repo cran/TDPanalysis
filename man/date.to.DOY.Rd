@@ -21,4 +21,3 @@ Convert dates from the DD/MM/YYYY format to day of the year (DOY)
 dates = c("01/01/2000", "03/03/2000", "03/03/1999")
 date.to.DOY(dates=dates)
 }
-

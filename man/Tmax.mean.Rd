@@ -25,4 +25,3 @@ DOY = c(rep(102, times=10), rep(103, times=10))
 df <- data.frame(DOY, ID, Tmax)
 Tmax.mean(df)
 }
-

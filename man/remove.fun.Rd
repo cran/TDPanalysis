@@ -28,4 +28,3 @@ df <- data.frame(DOY, ID, Tmax)
 dates = c("103")
 remove.fun(df=df, dates=dates) 
 }
-

@@ -15,4 +15,3 @@ Exemple dataset exemple for the TDPanalysis package
 "DATE" is dates in dd/mm/yyyy format. "TIME" is time in hh:mm:ss format, "ID" is sub-groups and "tension" is the measured tension from the TDP probe.
 }
 \keyword{datasets}
-

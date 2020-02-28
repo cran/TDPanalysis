@@ -27,4 +27,3 @@ Granier A. 1985. A new method of sap flow measurement in tree stems. Annales Des
 
 Granier A. 1987. Evaluation of transpiration in a douglas-fir stand by means of sap flow measurements. Tree Physiology 3(4): 309-319.
 }
-
